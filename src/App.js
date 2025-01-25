@@ -25,71 +25,28 @@ import { UserProvider, ThemeProvider  } from './components/lesson5/Contexts';
 import Header from './components/lesson5/Header';
 import Profile from './components/lesson5/Profile';
 import Footer from './components/lesson5/Footer';
-import { useSelector } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import ThemeToggle from './components/lesson5/homework/ThemeToggle';
+import store from '../src/components/lesson6/redux/store';
+import { AddTask } from '@mui/icons-material';
+import AddProduct from './components/AddProduct.jsx';
+import ProductList from './components/ProductList.jsx';
+import EditProduct from './components/EditProduct.jsx';
 
 function App() {
-  const isDarkTheme = useSelector((state) => state.isDarkTheme);
-  // const liElements = [1, 2, 3, 4, 5, 6, 7];
-  // const renderItem = (item, index) => {
-  //     const style = { color: index % 2 === 0 ? 'red' : 'blue' };
-  //     return (
-  //       <div style={style}>
-  //           {item} - Уникальный стиль
-  //       </div>
-  //     );
-  // };
+  const [editingProduct , setEditingProduct] = React.useState(null);
   return (
-    <div className={isDarkTheme ? 'dark-theme' : 'light-theme'}>
-      <h1>Переключатель тем</h1>
-      <ThemeToggle/>  
-      {/* <Message name="Вася" age="20"/>
-      <TextInput />
-      <ToDoList />
-      <Timer /> 
-      <CommentsList />
-      <TextInput />
-      <Counter />
-      <ThemeSwitcher />
-      <TemperatureConverter />
-      <TodoList />
-      <Box>
-        <p>First item</p>
-      </Box>
-      <Box>
-        <p>Second item</p>
-      </Box>
-      <Box>
-        <p>Third item</p>
-      </Box>
-      <Box>
-        <img src={pic}></img>
-      </Box>
-      <ListNew listItems={liElements} renderItem={renderItem} />
+    <div className='App'>
+      <h1>Каталог продуктов</h1>
+            <AddProduct />
+            {editingProduct && (
+                <div>
+                    <h2>Изменить товар</h2>
+                    <EditProduct product={editingProduct} onClose={() => setEditingProduct(null)} />
+                </div>
+            )}
+            <ProductList setEditingProduct={setEditingProduct} />
       
-      <Router>
-        <Routes>
-          <Route path="/" element={<ListPage />} />
-          <Route path="/details/:id" element={<DetailPage />} />
-        </Routes>
-      </Router>
-
-        <Router>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/about" element={<AboutPage />} />
-          </Routes>
-          </Router>
-
-        <New/> */}
-
-        {/* <UserProvider>
-          <ThemeProvider>
-            <Header />
-            <Profile />
-            <Footer />
-          </ThemeProvider>
-        </UserProvider> */}
     </div>
   );
 }
