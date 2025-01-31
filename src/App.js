@@ -32,12 +32,16 @@ import { AddTask } from '@mui/icons-material';
 import AddProduct from './components/AddProduct.jsx';
 import ProductList from './components/ProductList.jsx';
 import EditProduct from './components/EditProduct.jsx';
+import NewTodoList from './components/NewTodoList.jsx';
 
 function App() {
   const [editingProduct , setEditingProduct] = React.useState(null);
   return (
     <div className='App'>
-      <h1>Каталог продуктов</h1>
+      <h1>Список задач</h1>
+      <NewTodoList/>
+
+      {/* <h1>Каталог продуктов</h1>
             <AddProduct />
             {editingProduct && (
                 <div>
@@ -45,7 +49,7 @@ function App() {
                     <EditProduct product={editingProduct} onClose={() => setEditingProduct(null)} />
                 </div>
             )}
-            <ProductList setEditingProduct={setEditingProduct} />
+            <ProductList setEditingProduct={setEditingProduct} /> */}
       
     </div>
   );
